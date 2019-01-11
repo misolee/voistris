@@ -56,6 +56,7 @@ const COLUMN = 10;
 const SQUARE = 30;
 const EMPTY = "black";
 let hold;
+let holdTime = true;
 
 function drawSquare(x, y, fillColor, strokeColor) {
   context.fillStyle = fillColor;
@@ -153,6 +154,7 @@ function playGame() {
     this.color = color;
     this.outlineColor = "white";
     this.picture = picture;
+    this.holdTime = 1;
     
     this.voistriminoN = 0; // start from the first pattern
     this.activeVoistrimino = this.voistrimino[this.voistriminoN];
@@ -191,6 +193,7 @@ function playGame() {
       this.draw();
     } else {
       this.lock();
+      holdTime = true;
       piece = next;
       next = randomPiece();
       picture = next.picture;
@@ -221,21 +224,20 @@ function playGame() {
       this.moveDown();
     }
   };
-  
   Piece.prototype.holdPiece = function () {
-    this.unDraw();
     if (!hold) {
       hold = this;
       this.unDraw();
       piece = randomPiece();
-    } else {
+    } else if (holdTime) {
+      this.unDraw();
       piece = hold;
-      piece.unDraw();
+      piece.x = this.x;
+      piece.y = this.y;
       hold = this;
-      this.draw();
-      console.log("piece", piece)
-      console.log("hold", hold)
-      // console.log("this", this)
+      piece.draw();
+      holdTime = false;
+    } else if (!holdTime) {
     }
     document.getElementById("hold-piece-image").src = hold.picture;
   };
@@ -284,11 +286,11 @@ function playGame() {
           document.getElementById("gameover-score").innerHTML = score;
           document.getElementById("game-end").style.display = 'block';
           document.getElementById("game-end").addEventListener("click", () => window.location.reload());
-          break;
         }
-  
+        
         // lock piece
         board[this.y + r][this.x + c] = this.color;
+        holdTime = true;
       }
     }
   
