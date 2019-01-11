@@ -10,10 +10,15 @@
   </head>
   <body>
     <div id="game-end">
-      GAME FINISH
-      <button id="replay-button">Replay</button>
+      <div class="game-over">
+        GAME OVER
+      </div>
+      <div class="your-score">
+        Your Score
+      </div>
+      <div id="gameover-score"></div>
     </div>
-    <button id="playbutton">Play</button>
+    <button id="playbutton"><i class="fas fa-play" id="playbutton-emoji"></i>PLAY</button>
     <div class="information">
       <div class="title">
         VOISTRIS
@@ -24,7 +29,7 @@
         <div class="hold-next-label">
           HOLD
         </div>
-        <div id="hold-piece"></div>
+        <div id="hold-piece"><img id="hold-piece-image" src="./voistrimino-colors/next-empty.png" /></div>
       </div>
       <div class="canvas">
         <canvas id="voistris" width="300" height="600"></canvas>

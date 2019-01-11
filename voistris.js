@@ -22,15 +22,20 @@ function sound(src) {
   };
 }
 
+const backgroundMusic = new sound("./Tetris.mp3");
 const controllerSound = new sound("./control.wav");
 const dropSound = new sound("./drop.wav");
 const gameOverSound = new sound("./game-over.wav");
+const levelUpSound = new sound("./level-up.wav");
+const levelUpSound2 = new sound("./level-up2.wav");
 let mute = false;
 
 function muteOrSound(sound) {
   if (!mute) {
+    backgroundMusic.play();
     sound.play();
   } else {
+    backgroundMusic.stop();
     sound.stop();
   }
 }
@@ -84,6 +89,7 @@ drawBoard();
 document.getElementById("game-end").style.display = 'none';
 
 function playGame() {
+  muteOrSound(backgroundMusic);
 
   var ctrl = new anycontrol();
   
@@ -217,7 +223,21 @@ function playGame() {
   };
   
   Piece.prototype.holdPiece = function () {
-    hold = this;
+    this.unDraw();
+    if (!hold) {
+      hold = this;
+      this.unDraw();
+      piece = randomPiece();
+    } else {
+      piece = hold;
+      piece.unDraw();
+      hold = this;
+      this.draw();
+      console.log("piece", piece)
+      console.log("hold", hold)
+      // console.log("this", this)
+    }
+    document.getElementById("hold-piece-image").src = hold.picture;
   };
   
   // rotate piece
@@ -260,8 +280,10 @@ function playGame() {
           // }
           gameOver = true;
           muteOrSound(gameOverSound);
+          backgroundMusic.stop();
+          document.getElementById("gameover-score").innerHTML = score;
           document.getElementById("game-end").style.display = 'block';
-          document.getElementById("replay-button").addEventListener("click", () => window.location.reload());
+          document.getElementById("game-end").addEventListener("click", () => window.location.reload());
           break;
         }
   
@@ -295,6 +317,8 @@ function playGame() {
         if (!(score % 30)) {
           speed *= 0.8;
           level += 1;
+          muteOrSound(levelUpSound);
+          muteOrSound(levelUpSound2);
         }
       }
     }

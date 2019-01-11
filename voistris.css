@@ -25,14 +25,15 @@ body {
   left: 50px;
 }
 
-#game-end {
+/* #game-end {
   position: absolute;
   height: 200px;
   width: 200px;
   background-color: white;
   color: red;
   font-size: 20px;
-}
+  z-index: 10;
+} */
 
 .game-board {
   display: flex;
@@ -148,21 +149,64 @@ body {
 }
 
 #playbutton {
-  height: 45px;
-  width: 150px;
+  height: 330px;
+  width: 480px;
   margin: 0 auto;
-  border-radius: 10px;
-  font-size: 15px;
-  background-color: red;
+  font-size: 100px;
+  background-color: #1fcbc4;
   color: white;
   position: absolute;
   z-index: 10;
   border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Monoton', cursive;
+  padding: 50px;
+  align-self: center;
+  width: 100%;
 }
 
 #playbutton:hover {
   cursor: pointer;
-  background-color: blue;
+  background-color: #db1d50;
+}
+
+#game-end {
+  height: 300px;
+  width: 480px;
+  margin: 0 auto;
+  font-size: 100px;
+  background-color: #db1d50;
+  color: white;
+  position: absolute;
+  z-index: 10;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Monoton', cursive;
+  padding: 15px;
+  align-self: center;
+  width: 100%;
+}
+
+#game-end:hover {
+  cursor: pointer;
+  background-color: #1fcbc4;
+  color: #db1d50;
+}
+
+.your-score {
+  font-size: 50px;
+}
+
+#gameover-score {
+  font-size: 50px;
+}
+
+#playbutton-emoji {
+  font-size: 100px;
 }
 
 .sound {
