@@ -50,6 +50,39 @@ body {
   width: 350px;
   padding-top: 50px;
   border-radius: 10px;
+  position: relative;
+}
+
+#paused {
+  height: 225px;
+  width: 480px;
+  margin: 0 auto;
+  font-size: 100px;
+  background-color: #db1d50;
+  color: white;
+  position: absolute;
+  z-index: 10;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Monoton', cursive;
+  padding: 15px;
+  align-self: center;
+  width: 100%;
+  padding-top: 90px;
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
 
 #voistris {
@@ -153,13 +186,13 @@ body {
   width: 480px;
   margin: 0 auto;
   font-size: 100px;
-  background-color: #1fcbc4;
   color: white;
+  /* display: flex;
+  flex-direction: column; */
+  background-color: #1fcbc4;
   position: absolute;
   z-index: 10;
   border: none;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   font-family: 'Monoton', cursive;
   padding: 50px;
