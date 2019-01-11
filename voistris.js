@@ -265,7 +265,6 @@ function playGame() {
           break;
         }
   
-  
         // lock piece
         board[this.y + r][this.x + c] = this.color;
       }
@@ -376,6 +375,7 @@ function playGame() {
 const playbutton = document.getElementById("playbutton");
 
 document.getElementById("playbutton").addEventListener("click", PLAYGAME);
+
 let volumeIcon = document.getElementById("volume-icon");
 volumeIcon.addEventListener("click", () => {
   if (!mute) {

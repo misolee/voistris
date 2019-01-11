@@ -1,5 +1,5 @@
 body {
-  margin: 80px 0;
+  margin: 40px 0;
   padding: 0;
   display: flex;
   text-align: center;
@@ -9,8 +9,20 @@ body {
   position: relative;
 }
 
-.title {
+.information {
   flex: 1;
+  font-size: 80px;
+  text-align: center;
+  max-width: 325px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  position: absolute;
+  left: 50px;
 }
 
 #game-end {
@@ -32,18 +44,29 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: red;
-  height: 700px;
+  background-color: rgba(255, 255, 255, 0.19);
+  height: 650px;
   width: 350px;
   padding-top: 50px;
   border-radius: 10px;
 }
 
 #voistris {
-  border: 10px solid #ffffffbf;
-  border-radius: 10px;
-  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2),
-  0 0 5px 5px rgba(255, 255, 255, 0.19);
+  border: 20px solid #ffffffbf;
+  /* border-radius: 10px; */
+  /* box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2),
+  0 0 5px 5px rgba(255, 255, 255, 0.19); */
+}
+
+.hold {
+  margin-top: 50px;
+  height: 200px;
+  width: 200px;
+  border-left: 20px solid #ffffffbf;
+  border-top: 20px solid #ffffffbf;
+  border-bottom: 20px solid #ffffffbf;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
 .hold-next-label {
@@ -53,27 +76,33 @@ body {
 #hold-piece {
   width: 100px;
   height: 100px;
-  border-left: 10px solid #ffffffbf;
-  border-top: 10px solid #ffffffbf;
-  border-bottom: 10px solid #ffffffbf;
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
   margin: 0 auto;
-  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2),
-  0 0 5px 5px rgba(255, 255, 255, 0.19);
+  /* box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2),
+  0 0 5px 5px rgba(255, 255, 255, 0.19); */
+}
+
+.next {
+  margin-top: 50px;
+  height: 200px;
+  width: 200px;
+  border-right: 20px solid #ffffffbf;
+  border-top: 20px solid #ffffffbf;
+  border-bottom: 20px solid #ffffffbf;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 #next-piece {
   width: 100px;
   height: 100px;
-  border-right: 10px solid #ffffffbf;
+  /* border-right: 10px solid #ffffffbf;
   border-top: 10px solid #ffffffbf;
   border-bottom: 10px solid #ffffffbf;
   border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-right-radius: 10px; */
   margin: 0 auto;
-  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2),
-  0 0 5px 5px rgba(255, 255, 255, 0.19);
+  /* box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2),
+  0 0 5px 5px rgba(255, 255, 255, 0.19); */
 }
 
 #next-piece-image {
@@ -83,16 +112,21 @@ body {
 
 .right-div {
   flex: 1;
+  font-size: 80px;
+  /* text-align: center; */
+  max-width: 325px;
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .score-level {
+  font-size: 50px;
 }
 
 .score {
-  margin: 0 auto;
-  font-size: 30px;
+  /* margin: 0 auto; */
   display: flex;
   color: white;
   z-index: 10;
@@ -103,8 +137,7 @@ body {
 }
 
 .level {
-  margin: 0 auto;
-  font-size: 30px;
+  /* margin: 0 auto; */
   display: flex;
   color: white;
   z-index: 10;
@@ -123,11 +156,17 @@ body {
   background-color: red;
   color: white;
   position: absolute;
+  z-index: 10;
+  border: none;
 }
 
 #playbutton:hover {
   cursor: pointer;
   background-color: blue;
+}
+
+.sound {
+  display: flex;
 }
 
 .fas {
