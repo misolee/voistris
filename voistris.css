@@ -1,0 +1,135 @@
+body {
+  margin: 80px 0;
+  padding: 0;
+  display: flex;
+  text-align: center;
+  font-family: 'Monoton', cursive;
+  background-image: url('./bg.gif');
+  color: white;
+  position: relative;
+}
+
+.title {
+  flex: 1;
+}
+
+#game-end {
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  background-color: white;
+  color: red;
+  font-size: 20px;
+}
+
+.game-board {
+  display: flex;
+  justify-content: center;
+  flex: 2;
+}
+
+.canvas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: red;
+  height: 700px;
+  width: 350px;
+  padding-top: 50px;
+  border-radius: 10px;
+}
+
+#voistris {
+  border: 10px solid #ffffffbf;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2),
+  0 0 5px 5px rgba(255, 255, 255, 0.19);
+}
+
+.hold-next-label {
+  font-size: 30px;
+}
+
+#hold-piece {
+  width: 100px;
+  height: 100px;
+  border-left: 10px solid #ffffffbf;
+  border-top: 10px solid #ffffffbf;
+  border-bottom: 10px solid #ffffffbf;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  margin: 0 auto;
+  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2),
+  0 0 5px 5px rgba(255, 255, 255, 0.19);
+}
+
+#next-piece {
+  width: 100px;
+  height: 100px;
+  border-right: 10px solid #ffffffbf;
+  border-top: 10px solid #ffffffbf;
+  border-bottom: 10px solid #ffffffbf;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 0 auto;
+  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2),
+  0 0 5px 5px rgba(255, 255, 255, 0.19);
+}
+
+#next-piece-image {
+  height: 100px;
+  width: 100px;
+}
+
+.right-div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.score-level {
+}
+
+.score {
+  margin: 0 auto;
+  font-size: 30px;
+  display: flex;
+  color: white;
+  z-index: 10;
+}
+
+#score {
+  margin-left: 10px;
+}
+
+.level {
+  margin: 0 auto;
+  font-size: 30px;
+  display: flex;
+  color: white;
+  z-index: 10;
+}
+
+#level {
+  margin-left: 10px;
+}
+
+#playbutton {
+  height: 45px;
+  width: 150px;
+  margin: 0 auto;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: red;
+  color: white;
+  position: absolute;
+}
+
+#playbutton:hover {
+  cursor: pointer;
+  background-color: blue;
+}
+
+.fas {
+  font-size: 50px;
+}
