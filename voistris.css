@@ -1,55 +1,149 @@
 body {
-  margin: 40px 0;
+  margin: 70px 0;
   padding: 0;
   display: flex;
   text-align: center;
   font-family: 'Monoton', cursive;
   background-image: url('./bg.gif');
   color: white;
-  position: relative;
+}
+
+.fas {
+  font-size: 50px;
+}
+
+#playbutton:focus {
+  outline: none;
 }
 
 .information {
-  flex: 1;
+  flex: 2;
   font-size: 80px;
   text-align: center;
-  max-width: 325px;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 660px;
+}
+
+.hold-box {
+  flex: 1.9;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .title {
-  position: absolute;
-  left: 50px;
+  flex: 1;
+  animation: title 0.5s linear infinite;
 }
 
-/* #game-end {
-  position: absolute;
-  height: 200px;
-  width: 200px;
-  background-color: white;
-  color: red;
+@keyframes title {
+  0%   {color: rgb(236, 55, 55);}
+  25%  {color: yellow;}
+  50%  {color: rgb(27, 27, 207);}
+  100% {color: rgb(70, 204, 70);}
+}
+
+.commands {
+  font-size: 30px;
+  flex: 2;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-right: 50px;
+  left: 0;
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
+  padding-top: 20px;
+  visibility: hidden;
+  position: relative;
+}
+
+@keyframes commands {
+  0% {left: -470px;}
+  100% {left: 0px;}
+}
+
+.command-controls {
+  display: flex;
   font-size: 20px;
-  z-index: 10;
-} */
+  height: 160px;
+  margin-top: 20px;
+  font-family: 'Righteous', cursive;
+}
+
+.keyboard-controls1 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  padding-left: 30px;
+}
+
+.command-outline {
+  border: 1px solid white;
+  border-radius: 10px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.command-direction {
+  display: flex;
+  align-items: center;
+}
+
+.shift {
+  width: 70px;
+}
+
+.space {
+  width: 80px;
+}
+
+.command-icon {
+  font-size: 20px;
+}
+
+.command-button {
+  display: flex;
+}
+
+.keyboard-controls2 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+#restart {
+  font-size: 50px;
+  text-align: end;
+  padding-top: 50px;
+  padding-left: 50px;
+}
+
+#restart:hover {
+  color: #db1d50;
+  cursor: pointer;
+}
 
 .game-board {
   display: flex;
   justify-content: center;
-  flex: 2;
+  flex: 0.8;
+  height: 600px;
 }
 
 .canvas {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.19);
+  background-color: white;
   height: 650px;
   width: 350px;
-  padding-top: 50px;
-  border-radius: 10px;
+  border-radius: 30px;
   position: relative;
 }
 
@@ -61,7 +155,7 @@ body {
   background-color: #db1d50;
   color: white;
   position: absolute;
-  z-index: 10;
+  z-index: 100;
   border: none;
   display: flex;
   flex-direction: column;
@@ -74,31 +168,28 @@ body {
 }
 
 .blink {
-  animation: blinker 1s linear infinite;
+  animation: blinker 1s ease-in infinite;
   display: flex;
   flex-direction: column;
 }
 
 @keyframes blinker {
-  50% {
-    opacity: 0;
-  }
+  50% {opacity: 0;}
 }
 
 #voistris {
-  border: 20px solid #ffffffbf;
-  /* border-radius: 10px; */
-  /* box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2),
-  0 0 5px 5px rgba(255, 255, 255, 0.19); */
+  box-sizing: border-box;
+  border: 30px ridge white;
+  border-radius: 30px;
 }
 
 .hold {
   margin-top: 50px;
-  height: 200px;
-  width: 200px;
-  border-left: 20px solid #ffffffbf;
-  border-top: 20px solid #ffffffbf;
-  border-bottom: 20px solid #ffffffbf;
+  height: 150px;
+  width: 150px;
+  border-left: 20px ridge white;
+  border-top: 20px ridge white;
+  border-bottom: 20px ridge white;
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
 }
@@ -111,17 +202,15 @@ body {
   width: 100px;
   height: 100px;
   margin: 0 auto;
-  /* box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2),
-  0 0 5px 5px rgba(255, 255, 255, 0.19); */
 }
 
 .next {
   margin-top: 50px;
-  height: 200px;
-  width: 200px;
-  border-right: 20px solid #ffffffbf;
-  border-top: 20px solid #ffffffbf;
-  border-bottom: 20px solid #ffffffbf;
+  height: 150px;
+  width: 150px;
+  border-right: 20px ridge white;
+  border-top: 20px ridge white;
+  border-bottom: 20px ridge white;
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
 }
@@ -129,14 +218,7 @@ body {
 #next-piece {
   width: 100px;
   height: 100px;
-  /* border-right: 10px solid #ffffffbf;
-  border-top: 10px solid #ffffffbf;
-  border-bottom: 10px solid #ffffffbf;
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px; */
   margin: 0 auto;
-  /* box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2),
-  0 0 5px 5px rgba(255, 255, 255, 0.19); */
 }
 
 #next-piece-image {
@@ -145,40 +227,56 @@ body {
 }
 
 .right-div {
-  flex: 1;
+  flex: 2;
   font-size: 80px;
-  /* text-align: center; */
-  max-width: 325px;
-  position: relative;
+  height: 660px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+.next-box {
+  flex: 1.5;
+}
+
 .score-level {
   font-size: 50px;
+  background-color: #db1d50;
+  margin-left: 50px;
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+
+  position: relative;
+}
+
+@keyframes score-level {
+  0% {right: -470px;}
+  100% {right: 0px;}
 }
 
 .score {
-  /* margin: 0 auto; */
   display: flex;
   color: white;
   z-index: 10;
 }
 
 #score {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .level {
-  /* margin: 0 auto; */
   display: flex;
   color: white;
   z-index: 10;
 }
 
 #level {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 #playbutton {
@@ -187,11 +285,9 @@ body {
   margin: 0 auto;
   font-size: 100px;
   color: white;
-  /* display: flex;
-  flex-direction: column; */
   background-color: #1fcbc4;
   position: absolute;
-  z-index: 10;
+  z-index: 100;
   border: none;
   align-items: center;
   font-family: 'Monoton', cursive;
@@ -213,7 +309,7 @@ body {
   background-color: #db1d50;
   color: white;
   position: absolute;
-  z-index: 10;
+  z-index: 100;
   border: none;
   display: flex;
   flex-direction: column;
@@ -244,8 +340,17 @@ body {
 
 .sound {
   display: flex;
+  flex: 1;
+  margin-left: 50px;
+  justify-content: space-between;
 }
 
-.fas {
-  font-size: 50px;
+.fa-volume-up {
+  padding-right: 70px;
+  padding-top: 60px;
+}
+
+.fa-volume-mute {
+  padding-right: 70px;
+  padding-top: 60px;
 }

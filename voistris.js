@@ -22,16 +22,16 @@ function sound(src) {
   };
 }
 
-const backgroundMusic = new sound("./Tetris.mp3");
+const backgroundMusic = new sound("./sound/Tetris.mp3");
 backgroundMusic.sound.volume = 0.3;
-const controllerSound = new sound("./control.wav");
+const controllerSound = new sound("./sound/control.wav");
 controllerSound.sound.volume = 0.4;
-const dropSound = new sound("./drop.wav");
+const dropSound = new sound("./sound/drop.wav");
 dropSound.sound.volume = 0.4;
-const gameOverSound = new sound("./game-over.wav");
-const gameOverSound2 = new sound("./game-over2.wav");
-const levelUpSound = new sound("./level-up.wav");
-const levelUpSound2 = new sound("./level-up2.wav");
+const gameOverSound = new sound("./sound/game-over.wav");
+const gameOverSound2 = new sound("./sound/game-over2.wav");
+const levelUpSound = new sound("./sound/level-up.wav");
+const levelUpSound2 = new sound("./sound/level-up2.wav");
 levelUpSound2.sound.volume = 0.4;
 let mute = false;
 
@@ -95,13 +95,17 @@ drawBoard();
 
 document.getElementById("game-end").style.display = 'none';
 document.getElementById("paused").style.display = 'none';
+document.getElementById("restart").addEventListener("click", () => window.location.reload());
 
 function playGame() {
   muteOrSound(backgroundMusic);
+  document.getElementById("commands").style.visibility = 'visible';
+  document.getElementById("commands").style.animation = 'commands 0.7s';
+  document.getElementById("score-level").style.animation = 'score-level 0.7s';
 
   var ctrl = new anycontrol();
   
-  ctrl.addCommand("left", function () {
+  ctrl.addCommand("banana", function () {
     console.log("left")
     piece.moveLeft();
     dropStart = Date.now();
@@ -131,7 +135,7 @@ function playGame() {
     dropStart = Date.now();
   });
   
-  // ctrl.start();
+  ctrl.start();
   
   // the pieces and their colors
   const PIECES = [
@@ -237,21 +241,24 @@ function playGame() {
       this.moveDown();
     }
   };
+  
   Piece.prototype.holdPiece = function () {
     if (!hold) {
       hold = this;
+      piece = next;
       this.unDraw();
-      piece = randomPiece();
     } else if (holdTime) {
       this.unDraw();
       piece = hold;
+
       piece.x = this.x;
       piece.y = this.y;
+
       hold = this;
       piece.draw();
       holdTime = false;
-    } else if (!holdTime) {
     }
+
     document.getElementById("hold-piece-image").src = hold.picture;
   };
   
@@ -391,6 +398,16 @@ function playGame() {
       muteOrSound(controllerSound);
     } else if (event.keyCode == 80) {
       pauseGame();
+    } else if (event.keyCode == 77) {
+      if (!mute) {
+        mute = true;
+        backgroundMusic.stop();
+        volumeIcon.className = "fas fa-volume-mute";
+      } else {
+        mute = false;
+        backgroundMusic.play();
+        volumeIcon.className = "fas fa-volume-up";
+      }
     }
   }
   
@@ -399,7 +416,11 @@ function playGame() {
   let gameOver = false;
   
   function drop() {
-    console.log(paused);
+    if (!hold) {
+      console.log(next)
+      document.getElementById("next-piece-image").src = next.picture;
+    }
+
     let now = Date.now();
     let delta = now - dropStart;
     

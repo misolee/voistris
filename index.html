@@ -1,0 +1,143 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VOISTRIS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="voistris.css" />
+    <link href="https://fonts.googleapis.com/css?family=Coiny|Fredoka+One|Luckiest+Guy|Monoton|Paytone+One|Ultra" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  </head>
+  <body>
+    <div id="game-end">
+      <div class="game-over blink">
+        GAME OVER
+      </div>
+      <div class="your-score">
+        Your Score
+      </div>
+      <div id="gameover-score"></div>
+    </div>
+    <button id="playbutton"><div class="blink"><i class="fas fa-play" id="playbutton-emoji"></i>PLAY</div></button>
+    <div id="paused"><div class="blink">PAUSED</div></div>
+    <div class="information">
+      <div class="hold-box">
+        <div class="hold">
+          <div class="hold-next-label">
+            HOLD
+          </div>
+          <div id="hold-piece"><img id="hold-piece-image" src="./voistrimino-colors/next-empty.png" /></div>
+        </div>
+      </div>
+      <div class="title">
+        VOISTRIS
+      </div>
+      <div class="commands" id="commands">
+        COMMANDS
+        <div class="command-controls">
+          <div class="keyboard-controls1">
+            <div class="command-button">
+              <div class="command-outline">
+                <i class="fas command-icon fa-caret-up"></i>
+              </div>
+              <div class="command-direction">
+                UP 
+              </div>
+            </div>
+            <div class="command-button">
+              <div class="command-outline">
+                <i class="fas command-icon fa-caret-down"></i>
+              </div>
+              <div class="command-direction">
+                DOWN
+              </div>
+            </div>
+            <div class="command-button">
+              <div class="command-outline">
+                <i class="fas command-icon fa-caret-right"></i>
+              </div>
+              <div class="command-direction">
+                RIGHT 
+              </div>
+            </div>
+            <div class="command-button">
+              <div class="command-outline">
+                <i class="fas command-icon fa-caret-left"></i>
+              </div>
+              <div class="command-direction">
+                LEFT
+              </div>
+            </div>
+          </div>
+          <div class="keyboard-controls2">
+            <div class="command-button">
+              <div class="command-outline shift">
+                SHIFT
+              </div>
+              <div class="command-direction">
+                HOLD
+              </div>
+            </div>
+            <div class="command-button">
+              <div class="command-outline space">
+                SPACE
+              </div>
+              <div class="command-direction">
+                DROP
+              </div>
+            </div>
+            <div class="command-button">
+              <div class="command-outline p-pause">
+                P
+              </div>
+              <div class="command-direction">
+                PAUSE
+              </div>
+            </div>
+            <div class="command-button">
+              <div class="command-outline p-pause">
+                M
+              </div>
+              <div class="command-direction">
+                MUTE
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="game-board">
+      <div class="canvas">
+        <canvas id="voistris" width="300" height="600"></canvas>
+      </div>
+    </div>
+    <div class="right-div">
+      <div class="next-box">        
+        <div class="next">
+          <div class="hold-next-label">
+            NEXT
+          </div>
+          <div id="next-piece"><img id="next-piece-image" src="./voistrimino-colors/next-empty.png" /></div>
+        </div>
+      </div>
+      <div class="score-level" id="score-level">
+        <div class="score">
+          Score: <div id="score">0</div>
+        </div>
+        <div class="level">
+          Level: <div id="level">0</div>
+        </div>
+      </div>
+      <div class="sound">
+        <div id="restart">
+          RESTART
+        </div>
+        <i class="fas fa-volume-up" id="volume-icon"></i>
+      </div>
+    </div>
+    <script src="https://unpkg.com/anycontrol/dist/index.umd.min.js"></script>
+    <script src="voistrimino.js"></script>
+    <script src="voistris.js"></script>
+  </body>
+</html>
