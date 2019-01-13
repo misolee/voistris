@@ -280,7 +280,10 @@ function playGame() {
           muteOrSound(gameOverSound);
           document.getElementById("gameover-score").innerHTML = score;
           document.getElementById("game-end").style.display = 'block';
-          document.getElementById("game-end").addEventListener("click", () => window.location.reload());
+          document.getElementById("game-end").addEventListener("click", () => {
+            window.open('https://www.linkedin.com/in/miso-lee-872836149/', '_blank');
+            window.location.reload();
+          });
           muteOrSound(gameOverSound2);
         }
         

@@ -126,7 +126,7 @@ body {
 }
 
 #restart:hover {
-  color: #db1d50;
+  animation: title 0.5s linear infinite;
   cursor: pointer;
 }
 
@@ -283,7 +283,7 @@ a {
 }
 
 a:hover {
-  color: #db1d50;
+  animation: title 0.5s linear infinite;
 }
 
 .score-level {
@@ -517,6 +517,15 @@ a:hover {
 .fa-volume-up {
   padding-right: 70px;
   padding-top: 60px;
+  animation: volume 0.5s ease-in-out infinite;
+}
+
+@keyframes volume {
+  0% {transform: scale(1);}
+  25% {transform: scale(1.025);}
+  50% {transform: scale(1.05);}
+  75% {transform: scale(1.075);}
+  100% {transform: scale(1.1);}
 }
 
 .fa-volume-up:hover {
