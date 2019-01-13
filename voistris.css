@@ -251,7 +251,39 @@ body {
 }
 
 .next-box {
+  display: flex;
+  justify-content: space-between;
   flex: 1.5;
+}
+
+.my-information {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 35px;
+  padding-top: 70px;
+  padding-right: 50px;
+}
+
+.github-linkedin {
+  display: flex;
+  justify-content: space-evenly;
+  padding-right: 50px;
+}
+
+.info-logo {
+  font-size: 60px;
+  margin: 30px 30px 0 10px;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: #db1d50;
 }
 
 .score-level {
