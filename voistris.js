@@ -1,4 +1,4 @@
-window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+// window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
 
 // const recognition = new window.SpeechRecognition();
 // recognition.continuous = true; //continuous results are returned for each recognition
@@ -399,53 +399,44 @@ function playGame() {
     const commandDrop = document.getElementById("voice-commands-drop").value;
 
     ctrl.addCommand(`${commandLeft}`, function () {
-      console.log(commandLeft)
       piece.moveLeft();
       dropStart = Date.now();
     });
 
     ctrl.addCommand(`${commandRight}`, function () {
-      console.log(commandRight)
       piece.moveRight();
       dropStart = Date.now();
     });
 
     ctrl.addCommand(`${commandDown}`, function () {
-      console.log(commandDown)
       piece.moveDown();
       dropStart = Date.now();
     });
 
     ctrl.addCommand(`${commandRotate}`, function () {
-      console.log(commandRotate)
       piece.rotate();
       dropStart = Date.now();
     });
 
     ctrl.addCommand(`${commandDrop}`, function () {
-      console.log(commandDrop)
       piece.moveAllTheWayDown();
       dropStart = Date.now();
     });
 
     ctrl.addCommand(`${commandHold}`, function () {
-      console.log(commandHold)
       piece.holdPiece();
       dropStart = Date.now();
     });
 
     ctrl.addCommand("restart", function () {
-      console.log("restart")
       window.location.reload();
     });
 
     ctrl.addCommand("pause", function () {
-      console.log("pause")
       pauseGame();
     });
 
     ctrl.addCommand("play", function () {
-      console.log("pause")
       pauseGame();
     });
 
@@ -512,6 +503,9 @@ volumeIcon.addEventListener("click", () => {
   }
 });
 
+const playbutton = document.getElementById("playbutton");
+playbutton.addEventListener("click", PLAYWITHKEYBOARD);
+
 function PLAYCOUNTDOWN() {
   countdown = document.getElementById("countdown");
   
@@ -521,6 +515,7 @@ function PLAYCOUNTDOWN() {
     countdown.innerHTML = 3;
     countdown.className = 'count';
     playbutton.style.backgroundColor = 'transparent';
+    playbutton.removeEventListener("click", PLAYWITHKEYBOARD);
   }, 0);
   setTimeout(() => {
     muteOrSound(beep2);
@@ -581,6 +576,7 @@ function PLAYCOUNTDOWN() {
       backgroundMusic.play();
     }
   }, 3200);
+
 }
 
 const chooseVoicePlay = document.getElementById("choose-voice-play");
@@ -589,9 +585,6 @@ chooseVoicePlay.addEventListener("click", () => {
   document.getElementById("countdown").style.visibility = 'visible';
   PLAYGAMEWITHVOICE();
 });
-
-const playbutton = document.getElementById("playbutton");
-playbutton.addEventListener("click", PLAYWITHKEYBOARD);
 
 function PLAYWITHKEYBOARD() {
   voiceOrKeyboard = "keyboard";
