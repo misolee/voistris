@@ -6,6 +6,7 @@ body {
   font-family: 'Monoton', cursive;
   background-image: url('./bg.gif');
   color: white;
+  overflow: hidden;
 }
 
 .fas {
