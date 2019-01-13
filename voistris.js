@@ -33,14 +33,23 @@ const gameOverSound2 = new sound("./sound/game-over2.wav");
 const levelUpSound = new sound("./sound/level-up.wav");
 const levelUpSound2 = new sound("./sound/level-up2.wav");
 levelUpSound2.sound.volume = 0.4;
+// const three = new sound("./sound/3.mp3");
+// const two = new sound("./sound/2.mp3");
+// const one = new sound("./sound/1.mp3");
+// const go = new sound("./sound/go.mp3");
+const beep1 = new sound("./sound/count-beep.wav");
+const beep2 = new sound("./sound/count-beep.wav");
+const beep3 = new sound("./sound/count-beep.wav");
+const go = new sound("./sound/go.wav");
+const ready = new sound("./sound/ready.wav");
 let mute = false;
 
 function muteOrSound(sound) {
   if (!mute) {
-    backgroundMusic.play();
+    // backgroundMusic.play();
     sound.play();
   } else {
-    backgroundMusic.stop();
+    // backgroundMusic.stop();
     sound.stop();
   }
 }
@@ -92,65 +101,26 @@ function drawBoard() {
 }
 
 drawBoard();
+let voiceOrKeyboard = null;
 
 document.getElementById("game-end").style.display = 'none';
 document.getElementById("paused").style.display = 'none';
 document.getElementById("restart").addEventListener("click", () => window.location.reload());
 
-function playGame() {
-  muteOrSound(backgroundMusic);
-  document.getElementById("commands").style.visibility = 'visible';
-  document.getElementById("commands").style.animation = 'commands 0.7s';
-  document.getElementById("score-level").style.visibility = 'visible';
-  document.getElementById("score-level").style.animation = 'score-level 0.7s';
-
-  var ctrl = new anycontrol();
-  
-  ctrl.addCommand("banana", function () {
-    console.log("left")
-    piece.moveLeft();
-    dropStart = Date.now();
-  });
-
-  ctrl.addCommand("right", function () {
-    console.log("right")
-    piece.moveRight();
-    dropStart = Date.now();
-  });
-
-  ctrl.addCommand("rotate", function () {
-    console.log("rotate")
-    piece.rotate();
-    dropStart = Date.now();
-  });
-
-  ctrl.addCommand("drop", function () {
-    console.log("drop")
-    piece.moveAllTheWayDown();
-    dropStart = Date.now();
-  });
-
-  ctrl.addCommand("hold", function () {
-    console.log("drop")
-    piece.holdPiece();
-    dropStart = Date.now();
-  });
-  
-  // ctrl.start();
-  
+function playGame() {  
   // the pieces and their colors
   const PIECES = [
-    // [Z, "#ff0000", "./voistrimino-colors/next-red.png"], // red
-    // [S, "#00ff00", "./voistrimino-colors/next-green.png"], // green
-    // [T, "#cc00ff", "./voistrimino-colors/next-purple.png"], // purple
-    // [O, "#ffff00", "./voistrimino-colors/next-yellow.png"], // yellow
+    [Z, "#ff0000", "./voistrimino-colors/next-red.png"], // red
+    [S, "#00ff00", "./voistrimino-colors/next-green.png"], // green
+    [T, "#cc00ff", "./voistrimino-colors/next-purple.png"], // purple
+    [O, "#ffff00", "./voistrimino-colors/next-yellow.png"], // yellow
     [I, "#66ffff", "./voistrimino-colors/next-light-blue.png"], // light-blue
-    // [L, "#ff6500", "./voistrimino-colors/next-orange.png"], // orange
-    // [J, "#00ffcc", "./voistrimino-colors/next-mint.png"], // mint
-    // [U, "#ffcccc", "./voistrimino-colors/next-pink.png"], // pink
-    // [W, "#ff1cd0", "./voistrimino-colors/next-dark-pink.png"], // dark-pink
-    // [PLUS, "#6300d9", "./voistrimino-colors/next-light-purple.png"], // light-purple
-    // [DIAGONAL, "#ffffff", "./voistrimino-colors/next-white.png"], // white
+    [L, "#ff6500", "./voistrimino-colors/next-orange.png"], // orange
+    [J, "#00ffcc", "./voistrimino-colors/next-mint.png"], // mint
+    [U, "#ffcccc", "./voistrimino-colors/next-pink.png"], // pink
+    [W, "#ff1cd0", "./voistrimino-colors/next-dark-pink.png"], // dark-pink
+    [PLUS, "#6300d9", "./voistrimino-colors/next-light-purple.png"], // light-purple
+    [DIAGONAL, "#ffffff", "./voistrimino-colors/next-white.png"], // white
     [DOT, "#226f35", "./voistrimino-colors/next-forest-green.png"] // forest green
   ];
 
@@ -340,6 +310,8 @@ function playGame() {
         for(let c = 0; c < COLUMN; c++) {
           board[0][c] = EMPTY;
         }
+
+        muteOrSound(levelUpSound2);
   
         score += 10;
         if (!(score % 30)) {
@@ -377,43 +349,107 @@ function playGame() {
   };
   
   // keyboard control
-  document.addEventListener("keydown", CONTROL);
-  
-  function CONTROL(event) {
-    if (event.keyCode == 37)  {
-      piece.moveLeft();
-      dropStart = Date.now();
-      muteOrSound(controllerSound);
-    } else if (event.keyCode == 38) {
-      piece.rotate();
-      dropStart = Date.now();
-      muteOrSound(controllerSound);
-    } else if (event.keyCode == 39) {
-      piece.moveRight();
-      dropStart = Date.now();
-      muteOrSound(controllerSound);
-    } else if (event.keyCode == 40) {
-      piece.moveDown();
-      muteOrSound(controllerSound);
-    } else if (event.keyCode == 32) {
-      piece.moveAllTheWayDown();
-      muteOrSound(dropSound);
-    } else if (event.keyCode == 16) {
-      piece.holdPiece();
-      muteOrSound(controllerSound);
-    } else if (event.keyCode == 80) {
-      pauseGame();
-    } else if (event.keyCode == 77) {
-      if (!mute) {
-        mute = true;
-        backgroundMusic.stop();
-        volumeIcon.className = "fas fa-volume-mute";
-      } else {
-        mute = false;
-        backgroundMusic.play();
-        volumeIcon.className = "fas fa-volume-up";
+  if (voiceOrKeyboard === "keyboard") {
+    document.addEventListener("keydown", CONTROL);
+    
+    function CONTROL(event) {
+      if (event.keyCode == 37)  {
+        piece.moveLeft();
+        dropStart = Date.now();
+        muteOrSound(controllerSound);
+      } else if (event.keyCode == 38) {
+        piece.rotate();
+        dropStart = Date.now();
+        muteOrSound(controllerSound);
+      } else if (event.keyCode == 39) {
+        piece.moveRight();
+        dropStart = Date.now();
+        muteOrSound(controllerSound);
+      } else if (event.keyCode == 40) {
+        piece.moveDown();
+        muteOrSound(controllerSound);
+      } else if (event.keyCode == 32) {
+        piece.moveAllTheWayDown();
+        muteOrSound(dropSound);
+      } else if (event.keyCode == 16) {
+        piece.holdPiece();
+        muteOrSound(controllerSound);
+      } else if (event.keyCode == 80) {
+        pauseGame();
+      } else if (event.keyCode == 77) {
+        if (!mute) {
+          mute = true;
+          backgroundMusic.stop();
+          volumeIcon.className = "fas fa-volume-mute";
+        } else {
+          mute = false;
+          backgroundMusic.play();
+          volumeIcon.className = "fas fa-volume-up";
+        }
       }
     }
+  } else if (voiceOrKeyboard === "voice") {
+    var ctrl = new anycontrol();
+
+    const commandLeft = document.getElementById("voice-commands-left").value;
+    const commandRight = document.getElementById("voice-commands-right").value;
+    const commandDown = document.getElementById("voice-commands-down").value;
+    const commandRotate = document.getElementById("voice-commands-rotate").value;
+    const commandHold = document.getElementById("voice-commands-hold").value;
+    const commandDrop = document.getElementById("voice-commands-drop").value;
+
+    ctrl.addCommand(`${commandLeft}`, function () {
+      console.log(commandLeft)
+      piece.moveLeft();
+      dropStart = Date.now();
+    });
+
+    ctrl.addCommand(`${commandRight}`, function () {
+      console.log(commandRight)
+      piece.moveRight();
+      dropStart = Date.now();
+    });
+
+    ctrl.addCommand(`${commandDown}`, function () {
+      console.log(commandDown)
+      piece.moveDown();
+      dropStart = Date.now();
+    });
+
+    ctrl.addCommand(`${commandRotate}`, function () {
+      console.log(commandRotate)
+      piece.rotate();
+      dropStart = Date.now();
+    });
+
+    ctrl.addCommand(`${commandDrop}`, function () {
+      console.log(commandDrop)
+      piece.moveAllTheWayDown();
+      dropStart = Date.now();
+    });
+
+    ctrl.addCommand(`${commandHold}`, function () {
+      console.log(commandHold)
+      piece.holdPiece();
+      dropStart = Date.now();
+    });
+
+    ctrl.addCommand("restart", function () {
+      console.log("restart")
+      window.location.reload();
+    });
+
+    ctrl.addCommand("pause", function () {
+      console.log("pause")
+      pauseGame();
+    });
+
+    ctrl.addCommand("play", function () {
+      console.log("pause")
+      pauseGame();
+    });
+
+    ctrl.start();
   }
   
   // drop every 1 second
@@ -441,7 +477,7 @@ function playGame() {
     paused = !paused; // toggle the gamePaused value (false <-> true)
     if (!paused) {
       drop();
-      backgroundMusic.play();
+      muteOrSound(backgroundMusic);
       document.getElementById("paused").style.display = 'none';
     } else {
       backgroundMusic.stop();
@@ -450,9 +486,18 @@ function playGame() {
   }
 }
 
-const playbutton = document.getElementById("playbutton");
+const keyboard = document.getElementById("keyboard");
+keyboard.addEventListener("click", () => {
+  playbutton.style.visibility = 'visible';
+  document.getElementById("choose-option").style.visibility = 'hidden';
+});
 
-document.getElementById("playbutton").addEventListener("click", PLAYGAME);
+const voiceInput = document.getElementById("voice-option");
+const voice = document.getElementById("voice");
+voice.addEventListener("click", () => {
+  voiceInput.style.visibility = 'visible';
+  document.getElementById("choose-option").style.visibility = 'hidden';
+});
 
 let volumeIcon = document.getElementById("volume-icon");
 volumeIcon.addEventListener("click", () => {
@@ -467,12 +512,94 @@ volumeIcon.addEventListener("click", () => {
   }
 });
 
-function PLAYGAME() {
-  document.getElementById("playbutton").style.display = 'none';
-  // setTimeout(() => playGame(), 5000);
-  playGame();
+function PLAYCOUNTDOWN() {
+  countdown = document.getElementById("countdown");
+  
+  setTimeout(() => {
+    backgroundMusic.stop();
+    muteOrSound(beep1);
+    countdown.innerHTML = 3;
+    countdown.className = 'count';
+    playbutton.style.backgroundColor = 'transparent';
+  }, 0);
+  setTimeout(() => {
+    muteOrSound(beep2);
+    countdown.innerHTML = 2;
+    countdown.className = 'count';
+  }, 800);
+  setTimeout(() => {
+    muteOrSound(beep3);
+    muteOrSound(ready);
+    countdown.innerHTML = 1;
+    countdown.className = 'count';
+  }, 1600);
+  setTimeout(() => {
+    muteOrSound(go);
+    countdown.innerHTML = "GO!";
+    countdown.className = 'go';
+    if (voiceOrKeyboard === "keyboard") {
+      document.getElementById("commands").style.visibility = 'visible';
+      document.getElementById("commands").style.animation = 'commands 0.7s';
+    } else if (voiceOrKeyboard === "voice") {
+      const commandLeft = document.getElementById("voice-commands-left").value;
+      const commandRight = document.getElementById("voice-commands-right").value;
+      const commandDown = document.getElementById("voice-commands-down").value;
+      const commandRotate = document.getElementById("voice-commands-rotate").value;
+      const commandHold = document.getElementById("voice-commands-hold").value;
+      const commandDrop = document.getElementById("voice-commands-drop").value;
+      
+      document.getElementById("command-outline-hold").innerHTML = "HOLD";
+      document.getElementById("command-outline-drop").innerHTML = "DROP";
+      document.getElementById("command-outline-pause").style.display = "none";
+      document.getElementById("command-outline-mute").style.display = "none";
+      document.getElementById("command-outline-mute").style.display = "none";
+
+      document.getElementById("voice-control-right").innerHTML = commandRight;
+      document.getElementById("voice-control-left").innerHTML = commandLeft;
+      document.getElementById("voice-control-rotate").innerHTML = commandRotate;
+      document.getElementById("voice-control-down").innerHTML = commandDown;
+      document.getElementById("voice-control-hold").innerHTML = commandHold;
+      document.getElementById("voice-control-drop").innerHTML = commandDrop;
+      document.getElementById("voice-control-mute").innerHTML = "RESTART";
+      document.getElementById("voice-control-pause").innerHTML = "PAUSE / PLAY";
+
+      document.getElementById("commands").style.visibility = 'visible';
+      document.getElementById("commands").style.animation = 'commands 0.7s';
+    }
+    document.getElementById("score-level").style.visibility = 'visible';
+    document.getElementById("score-level").style.animation = 'score-level 0.7s';
+    document.getElementById("restart-volume").style.visibility = 'visible';
+    document.getElementById("restart-volume").style.animation = 'restart-volume 5s';
+  }, 2400);
+  setTimeout(() => playbutton.style.display = 'none', 3200);
+  setTimeout(() => {
+    playGame();
+    if (mute) {
+      document.getElementById("volume-icon").className = "fas fa-volume-mute";
+      backgroundMusic.stop();
+    } else {
+      backgroundMusic.play();
+    }
+  }, 3200);
 }
 
+const chooseVoicePlay = document.getElementById("choose-voice-play");
+chooseVoicePlay.addEventListener("click", () => {
+  document.getElementById("voice-option").style.visibility = 'hidden';
+  document.getElementById("countdown").style.visibility = 'visible';
+  PLAYGAMEWITHVOICE();
+});
 
+const playbutton = document.getElementById("playbutton");
+playbutton.addEventListener("click", PLAYWITHKEYBOARD);
 
+function PLAYWITHKEYBOARD() {
+  voiceOrKeyboard = "keyboard";
+  PLAYCOUNTDOWN();  
+}
 
+function PLAYGAMEWITHVOICE() {
+  voiceOrKeyboard = "voice";
+  mute = true;
+  PLAYCOUNTDOWN();
+}

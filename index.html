@@ -19,7 +19,66 @@
       </div>
       <div id="gameover-score"></div>
     </div>
-    <button id="playbutton"><div class="blink"><i class="fas fa-play" id="playbutton-emoji"></i>PLAY</div></button>
+    <button id="playbutton">
+      <div class="blink" id="countdown"><i class="fas fa-play" id="playbutton-emoji"></i>PLAY</div>
+    </button>
+    <div id="voice-option">
+      <div class="choose-option-label">
+        VOICE COMMANDS
+      </div>
+      <div class="voice-commands-inputs">
+        <div class="voice-commands-inputs-words">
+          <div class="voice-commands-label-inputs">
+            <div>
+              LEFT:
+            </div>
+            <div>
+              RIGHT:
+            </div>
+            <div>
+              DOWN:
+            </div>
+          </div>
+          <div class="voice-commands-label-inputs">
+            <input value="left" id="voice-commands-left" />
+            <input value="right" id="voice-commands-right" />
+            <input value="down" id="voice-commands-down" />
+          </div>
+        </div>
+        <div class="voice-commands-inputs-words">
+          <div class="voice-commands-label-inputs">
+            <div>
+              ROTATE:
+            </div>
+            <div>
+              HOLD:
+            </div>
+            <div>
+              DROP:
+            </div>
+          </div>
+          <div class="voice-commands-label-inputs">
+            <input value="rotate" id="voice-commands-rotate" />
+            <input value="hold" id="voice-commands-hold" />
+            <input value="drop" id="voice-commands-drop" />
+          </div>
+          <div class="voice-commands-label-inputs">
+          </div>
+        </div>
+      </div>
+      <div class="choose-voice-play" id="choose-voice-play">
+        PLAY
+      </div>
+    </div>
+    <div class="choose-option" id ="choose-option">
+      <div class="choose-option-label">
+        CHOOSE OPTION
+      </div>
+      <div class="choose-method">
+        <div class="voice" id="voice"><i class="fas fa-microphone choose-method-icon"></i>VOICE</div>
+        <div class="keyboard" id="keyboard"><i class="fas fa-keyboard choose-method-icon"></i>KEYBOARD</div>
+      </div>
+    </div>
     <div id="paused"><div class="blink">PAUSED</div></div>
     <div class="information">
       <div class="hold-box">
@@ -39,25 +98,9 @@
           <div class="keyboard-controls1">
             <div class="command-button">
               <div class="command-outline">
-                <i class="fas command-icon fa-caret-up"></i>
-              </div>
-              <div class="command-direction">
-                UP 
-              </div>
-            </div>
-            <div class="command-button">
-              <div class="command-outline">
-                <i class="fas command-icon fa-caret-down"></i>
-              </div>
-              <div class="command-direction">
-                DOWN
-              </div>
-            </div>
-            <div class="command-button">
-              <div class="command-outline">
                 <i class="fas command-icon fa-caret-right"></i>
               </div>
-              <div class="command-direction">
+              <div class="command-direction" id="voice-control-right">
                 RIGHT 
               </div>
             </div>
@@ -65,41 +108,57 @@
               <div class="command-outline">
                 <i class="fas command-icon fa-caret-left"></i>
               </div>
-              <div class="command-direction">
+              <div class="command-direction" id="voice-control-left">
                 LEFT
+              </div>
+            </div>
+            <div class="command-button">
+              <div class="command-outline">
+                <i class="fas command-icon fa-caret-up"></i>
+              </div>
+              <div class="command-direction" id="voice-control-rotate">
+                ROTATE 
+              </div>
+            </div>
+            <div class="command-button">
+              <div class="command-outline">
+                <i class="fas command-icon fa-caret-down"></i>
+              </div>
+              <div class="command-direction" id="voice-control-down">
+                DOWN
               </div>
             </div>
           </div>
           <div class="keyboard-controls2">
             <div class="command-button">
-              <div class="command-outline shift">
+              <div class="command-outline shift" id="command-outline-hold">
                 SHIFT
               </div>
-              <div class="command-direction">
+              <div class="command-direction" id="voice-control-hold">
                 HOLD
               </div>
             </div>
             <div class="command-button">
-              <div class="command-outline space">
+              <div class="command-outline space" id="command-outline-drop">
                 SPACE
               </div>
-              <div class="command-direction">
+              <div class="command-direction" id="voice-control-drop">
                 DROP
               </div>
             </div>
             <div class="command-button">
-              <div class="command-outline p-pause">
+              <div class="command-outline p-pause" id="command-outline-pause">
                 P
               </div>
-              <div class="command-direction">
+              <div class="command-direction" id="voice-control-pause">
                 PAUSE
               </div>
             </div>
-            <div class="command-button">
-              <div class="command-outline p-pause">
+            <div class="command-button" id="command-mute">
+              <div class="command-outline p-pause" id="command-outline-mute">
                 M
               </div>
-              <div class="command-direction">
+              <div class="command-direction" id="voice-control-mute">
                 MUTE
               </div>
             </div>
@@ -129,7 +188,7 @@
           Level: <div id="level">0</div>
         </div>
       </div>
-      <div class="sound">
+      <div class="sound" id="restart-volume">
         <div id="restart">
           RESTART
         </div>
