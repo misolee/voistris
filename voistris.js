@@ -101,6 +101,7 @@ function playGame() {
   muteOrSound(backgroundMusic);
   document.getElementById("commands").style.visibility = 'visible';
   document.getElementById("commands").style.animation = 'commands 0.7s';
+  document.getElementById("score-level").style.visibility = 'visible';
   document.getElementById("score-level").style.animation = 'score-level 0.7s';
 
   var ctrl = new anycontrol();
@@ -135,21 +136,21 @@ function playGame() {
     dropStart = Date.now();
   });
   
-  ctrl.start();
+  // ctrl.start();
   
   // the pieces and their colors
   const PIECES = [
-    [Z, "#ff0000", "./voistrimino-colors/next-red.png"], // red
-    [S, "#00ff00", "./voistrimino-colors/next-green.png"], // green
-    [T, "#cc00ff", "./voistrimino-colors/next-purple.png"], // purple
-    [O, "#ffff00", "./voistrimino-colors/next-yellow.png"], // yellow
+    // [Z, "#ff0000", "./voistrimino-colors/next-red.png"], // red
+    // [S, "#00ff00", "./voistrimino-colors/next-green.png"], // green
+    // [T, "#cc00ff", "./voistrimino-colors/next-purple.png"], // purple
+    // [O, "#ffff00", "./voistrimino-colors/next-yellow.png"], // yellow
     [I, "#66ffff", "./voistrimino-colors/next-light-blue.png"], // light-blue
-    [L, "#ff6500", "./voistrimino-colors/next-orange.png"], // orange
-    [J, "#00ffcc", "./voistrimino-colors/next-mint.png"], // mint
-    [U, "#ffcccc", "./voistrimino-colors/next-pink.png"], // pink
-    [W, "#ff1cd0", "./voistrimino-colors/next-dark-pink.png"], // dark-pink
-    [PLUS, "#6300d9", "./voistrimino-colors/next-light-purple.png"], // light-purple
-    [DIAGONAL, "#ffffff", "./voistrimino-colors/next-white.png"], // white
+    // [L, "#ff6500", "./voistrimino-colors/next-orange.png"], // orange
+    // [J, "#00ffcc", "./voistrimino-colors/next-mint.png"], // mint
+    // [U, "#ffcccc", "./voistrimino-colors/next-pink.png"], // pink
+    // [W, "#ff1cd0", "./voistrimino-colors/next-dark-pink.png"], // dark-pink
+    // [PLUS, "#6300d9", "./voistrimino-colors/next-light-purple.png"], // light-purple
+    // [DIAGONAL, "#ffffff", "./voistrimino-colors/next-white.png"], // white
     [DOT, "#226f35", "./voistrimino-colors/next-forest-green.png"] // forest green
   ];
 
@@ -250,6 +251,10 @@ function playGame() {
     } else if (holdTime) {
       this.unDraw();
       piece = hold;
+
+      // if (piece.x === 0) {
+      //   piece.x = 1;
+      // }
 
       piece.x = this.x;
       piece.y = this.y;
@@ -416,11 +421,6 @@ function playGame() {
   let gameOver = false;
   
   function drop() {
-    if (!hold) {
-      console.log(next)
-      document.getElementById("next-piece-image").src = next.picture;
-    }
-
     let now = Date.now();
     let delta = now - dropStart;
     
@@ -469,6 +469,7 @@ volumeIcon.addEventListener("click", () => {
 
 function PLAYGAME() {
   document.getElementById("playbutton").style.display = 'none';
+  // setTimeout(() => playGame(), 5000);
   playGame();
 }
 

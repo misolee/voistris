@@ -250,7 +250,7 @@ body {
   flex: 1;
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
-
+  visibility: hidden;
   position: relative;
 }
 
