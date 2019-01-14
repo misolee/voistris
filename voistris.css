@@ -355,6 +355,12 @@ a:hover {
   padding-bottom: 10px;
 }
 
+.please-speak-slowly {
+  padding-bottom: 0;
+  padding-top: 10px;
+  color: #db1d50;
+}
+
 .choose-method {
   flex: 2;
   display: flex;
@@ -421,10 +427,11 @@ a:hover {
   flex-direction: column;
   justify-content: space-evenly;
   margin-right: 20px;
+  font-size: 25px;
 }
 
 .voice-commands-inputs-words input {
-  height: 45px;
+  height: 40px;
   margin-left: 20px;
   width: 200px;
   border-radius: 10px;
@@ -446,7 +453,7 @@ a:hover {
 }
 
 .choose-voice-play {
-  font-size: 40px;
+  font-size: 30px;
   margin-bottom: 10px;
 }
 

@@ -1,11 +1,21 @@
-// window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+var favicon_images = [
+                    "./favicon/blue-favicon.png",
+                    "./favicon/yellow-favicon.png",
+                    "./favicon/green-favicon.png",
+                    "./favicon/red-favicon.png"
+                ],
+    image_counter = 0; // To keep track of the current image
 
-// const recognition = new window.SpeechRecognition();
-// recognition.continuous = true; //continuous results are returned for each recognition
-// recognition.start();
-// recognition.onresult = (event) => {
-//   const speechToText = event.results[0][0].transcript;
-// };
+setInterval(function() {
+  favicon = document.getElementById("favicon-link");
+  favicon.href = favicon_images[image_counter];
+
+  if (image_counter == favicon_images.length -1) {
+    image_counter = 0;
+  } else {
+    image_counter++;
+  }
+}, 100);
 
 function sound(src) {
   this.sound = document.createElement("audio");
@@ -36,10 +46,6 @@ const gameOverSound2 = new sound("./sound/game-over2.wav");
 const levelUpSound = new sound("./sound/level-up.wav");
 const levelUpSound2 = new sound("./sound/level-up2.wav");
 levelUpSound2.sound.volume = 0.4;
-// const three = new sound("./sound/3.mp3");
-// const two = new sound("./sound/2.mp3");
-// const one = new sound("./sound/1.mp3");
-// const go = new sound("./sound/go.mp3");
 const beep1 = new sound("./sound/count-beep.wav");
 const beep2 = new sound("./sound/count-beep.wav");
 const beep3 = new sound("./sound/count-beep.wav");
@@ -49,10 +55,8 @@ let mute = false;
 
 function muteOrSound(sound) {
   if (!mute) {
-    // backgroundMusic.play();
     sound.play();
   } else {
-    // backgroundMusic.stop();
     sound.stop();
   }
 }
@@ -230,21 +234,9 @@ function playGame() {
       piece.x = this.x;
       piece.y = this.y;
 
-      // if (this.color === "#226f35" && piece.color === "#66ffff" && this.x !== 0) {
-      //   piece.x = 6;
-      // }
-
-      if (piece.color === "#66ffff" && piece.x > 6) {
-        piece.x = 6;
-      }
-
-      if (piece.x > 7) {
-        piece.x = 7;
-      }
-
-      if (this.x < 0) {
-        piece.x = 0;
-      }
+      if (piece.color === "#66ffff" && piece.x > 6) piece.x = 6;
+      if (piece.x > 7) piece.x = 7;
+      if (this.x < 0) piece.x = 0;
 
       hold = this;
       piece.draw();
@@ -277,7 +269,7 @@ function playGame() {
   };
   
   let score = 0;
-  let speed = 1000;
+  let speed = 800;
   let level = 0;
   
   // lock piece
