@@ -23,6 +23,11 @@
     <button id="playbutton">
       <div class="blink" id="countdown"><i class="fas fa-play" id="playbutton-emoji"></i>PLAY</div>
     </button>
+    <!-- <form method="post" action="/addscore">
+      <label>Enter your name</label>
+      <input type="text" name="name" placeholder="Enter your name" required>
+      <input type="submit" value="Submit">
+    </form> -->
     <div id="voice-option">
       <div class="choose-option-label">
         VOICE COMMANDS
@@ -88,12 +93,17 @@
     </div>
     <div id="paused"><div class="blink">PAUSED</div></div>
     <div class="information">
-      <div class="hold-box">
-        <div class="hold">
-          <div class="hold-next-label">
-            HOLD
+      <div class="top-left">
+        <div class="scoreboard" id="scoreboard">
+          SCOREBOARD
+        </div>
+        <div class="hold-box">
+          <div class="hold">
+            <div class="hold-next-label">
+              HOLD
+            </div>
+            <div id="hold-piece"><img id="hold-piece-image" src="./voistrimino-colors/next-empty.png" /></div>
           </div>
-          <div id="hold-piece"><img id="hold-piece-image" src="./voistrimino-colors/next-empty.png" /></div>
         </div>
       </div>
       <div class="title">

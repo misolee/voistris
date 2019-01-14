@@ -569,7 +569,11 @@ function PLAYCOUNTDOWN() {
 
       document.getElementById("commands").style.visibility = 'visible';
       document.getElementById("commands").style.animation = 'commands 0.7s';
+
     }
+    
+    document.getElementById("scoreboard").style.visibility = 'visible';
+    document.getElementById("scoreboard").style.animation = 'commands 0.7s';
     document.getElementById("score-level").style.visibility = 'visible';
     document.getElementById("score-level").style.animation = 'score-level 0.7s';
     document.getElementById("restart-volume").style.visibility = 'visible';

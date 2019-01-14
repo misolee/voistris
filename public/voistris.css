@@ -27,8 +27,25 @@ body {
   height: 660px;
 }
 
-.hold-box {
+.top-left {
+  display: flex;
+  justify-content: space-between;
   flex: 1.9;
+}
+
+.scoreboard {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  flex: 1;
+  margin-right: 30px;
+  padding-top: 10px;
+  visibility: hidden;
+  position: relative;
+}
+
+.hold-box {
   display: flex;
   flex-direction: row-reverse;
 }
