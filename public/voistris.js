@@ -1,4 +1,7 @@
-var favicon_images = [
+import { sendScore } from './score.js';
+import * as Voistrimino from './voistrimino.js';
+
+let favicon_images = [
                     "./favicon/blue-favicon.png",
                     "./favicon/yellow-favicon.png",
                     "./favicon/green-favicon.png",
@@ -7,7 +10,7 @@ var favicon_images = [
     image_counter = 0; // To keep track of the current image
 
 setInterval(function() {
-  favicon = document.getElementById("favicon-link");
+  let favicon = document.getElementById("favicon-link");
   favicon.href = favicon_images[image_counter];
 
   if (image_counter == favicon_images.length -1) {
@@ -117,18 +120,18 @@ document.getElementById("restart").addEventListener("click", () => window.locati
 function playGame() {  
   // the pieces and their colors
   const PIECES = [
-    [Z, "#ff0000", "./voistrimino-colors/next-red.png"], // red
-    [S, "#00ff00", "./voistrimino-colors/next-green.png"], // green
-    [T, "#cc00ff", "./voistrimino-colors/next-purple.png"], // purple
-    [O, "#ffff00", "./voistrimino-colors/next-yellow.png"], // yellow
-    [I, "#66ffff", "./voistrimino-colors/next-light-blue.png"], // light-blue
-    [L, "#ff6500", "./voistrimino-colors/next-orange.png"], // orange
-    [J, "#00ffcc", "./voistrimino-colors/next-mint.png"], // mint
-    [U, "#ffcccc", "./voistrimino-colors/next-pink.png"], // pink
-    [W, "#ff1cd0", "./voistrimino-colors/next-dark-pink.png"], // dark-pink
-    [PLUS, "#6300d9", "./voistrimino-colors/next-light-purple.png"], // light-purple
-    [DIAGONAL, "#ffffff", "./voistrimino-colors/next-white.png"], // white
-    [DOT, "#226f35", "./voistrimino-colors/next-forest-green.png"] // forest green
+    [Voistrimino.Z, "#ff0000", "./voistrimino-colors/next-red.png"], // red
+    [Voistrimino.S, "#00ff00", "./voistrimino-colors/next-green.png"], // green
+    [Voistrimino.T, "#cc00ff", "./voistrimino-colors/next-purple.png"], // purple
+    [Voistrimino.O, "#ffff00", "./voistrimino-colors/next-yellow.png"], // yellow
+    [Voistrimino.I, "#66ffff", "./voistrimino-colors/next-light-blue.png"], // light-blue
+    [Voistrimino.L, "#ff6500", "./voistrimino-colors/next-orange.png"], // orange
+    [Voistrimino.J, "#00ffcc", "./voistrimino-colors/next-mint.png"], // mint
+    [Voistrimino.U, "#ffcccc", "./voistrimino-colors/next-pink.png"], // pink
+    [Voistrimino.W, "#ff1cd0", "./voistrimino-colors/next-dark-pink.png"], // dark-pink
+    [Voistrimino.PLUS, "#6300d9", "./voistrimino-colors/next-light-purple.png"], // light-purple
+    [Voistrimino.DIAGONAL, "#ffffff", "./voistrimino-colors/next-white.png"], // white
+    [Voistrimino.DOT, "#226f35", "./voistrimino-colors/next-forest-green.png"] // forest green
   ];
 
   // initiate a piece
@@ -290,6 +293,11 @@ function playGame() {
             window.open('https://www.linkedin.com/in/miso-lee-872836149/', '_blank');
             window.location.reload();
           });
+
+          const name = document.getElementById("player-name").value;
+
+          sendScore({ name, score });
+
           muteOrSound(gameOverSound2);
         }
         
@@ -516,7 +524,7 @@ const playbutton = document.getElementById("playbutton");
 playbutton.addEventListener("click", PLAYWITHKEYBOARD);
 
 function PLAYCOUNTDOWN() {
-  countdown = document.getElementById("countdown");
+  let countdown = document.getElementById("countdown");
   
   setTimeout(() => {
     backgroundMusic.stop();

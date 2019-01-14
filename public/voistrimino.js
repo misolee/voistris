@@ -1,4 +1,4 @@
-const I = [
+export const I = [
   [
     [0, 0, 0, 0],
     [1, 1, 1, 1],
@@ -25,7 +25,7 @@ const I = [
   ]
 ];
 
-const L = [
+export const L = [
   [
     [1, 0, 0],
     [1, 1, 1],
@@ -48,7 +48,7 @@ const L = [
   ]
 ];
 
-const J = [
+export const J = [
   [
     [0, 0, 1],
     [1, 1, 1],
@@ -71,7 +71,7 @@ const J = [
   ]
 ];
 
-const O = [
+export const O = [
   [
     [0, 0, 0, 0],
     [0, 1, 1, 0],
@@ -80,7 +80,7 @@ const O = [
   ]
 ];
 
-const S = [
+export const S = [
   [
     [0, 1, 1],
     [1, 1, 0],
@@ -103,7 +103,7 @@ const S = [
   ]
 ];
 
-const T = [
+export const T = [
   [
     [0, 1, 0],
     [1, 1, 1],
@@ -126,7 +126,7 @@ const T = [
   ]
 ];
 
-const Z = [
+export const Z = [
   [
     [1, 1, 0],
     [0, 1, 1],
@@ -149,7 +149,7 @@ const Z = [
   ]
 ];
 
-const U = [
+export const U = [
   [
     [0, 0, 0],
     [1, 0, 1],
@@ -172,7 +172,7 @@ const U = [
   ]
 ];
 
-const W = [
+export const W = [
   [
     [1, 1, 0],
     [0, 1, 1],
@@ -195,7 +195,7 @@ const W = [
   ]
 ];
 
-const PLUS = [
+export const PLUS = [
   [
     [0, 1, 0],
     [1, 1, 1],
@@ -203,7 +203,7 @@ const PLUS = [
   ]
 ];
 
-const DIAGONAL = [
+export const DIAGONAL = [
    [
      [1, 0, 0],
      [0, 1, 0],
@@ -216,7 +216,7 @@ const DIAGONAL = [
    ],
 ];
 
-const DOT = [
+export const DOT = [
   [
     [1]
   ]

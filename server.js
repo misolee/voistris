@@ -1,7 +1,16 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const mongoose = require("mongoose");
+const db = require("./config/keys").mongoURI;
+const Scoreboard = require("./models/scoreboard");
+const bodyParser = require('body-parser');
 app.use(express.static('public'));
+
+mongoose
+  .connect(db, { useNewUrlParser: true })
+  .then(() => console.log("Connected to mongoDB"))
+  .catch(err => console.log(err));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
@@ -9,4 +18,21 @@ app.get("/", (req, res) => {
 
 app.listen(port, () => {
   console.log("Server listening on port " + port);
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.post("/addscore", (req, res) => {
+  const score = new Scoreboard(req.body);
+  console.log(req.body)
+  score.save()
+    .then(item => {
+      res.send("score saved to database");
+    })
+    .catch(err => {
+      res.status(400).send("unable to save to database");
+    });
 });
