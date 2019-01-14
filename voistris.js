@@ -225,12 +225,28 @@ function playGame() {
       this.unDraw();
       piece = hold;
 
-      // if (piece.x === 0) {
-      //   piece.x = 1;
-      // }
-
       piece.x = this.x;
       piece.y = this.y;
+
+      // if (this.color === "#226f35" && piece.color === "#66ffff" && this.x !== 0) {
+      //   piece.x = 6;
+      // }
+
+      if (piece.color === "#66ffff" && piece.x > 6) {
+        piece.x = 6;
+      }
+
+      if (piece.x > 7) {
+        piece.x = 7;
+      }
+
+      if (this.x < 0) {
+        piece.x = 0;
+      }
+
+      console.log("this", this)
+      console.log("piece", piece)
+      console.log("hold", hold)
 
       hold = this;
       piece.draw();
@@ -275,9 +291,6 @@ function playGame() {
   
         // pieces to lock on top = game over
         if (this.y + r < 0) {
-          // if (!alert('YOU LOSE')) {
-          //   window.location.reload();
-          // }
           gameOver = true;
           backgroundMusic.sound.volume = 0;
           muteOrSound(gameOverSound);
