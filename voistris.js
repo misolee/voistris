@@ -12,6 +12,9 @@ function sound(src) {
   this.sound.src = src;
   this.sound.setAttribute("preload", "auto");
   this.sound.setAttribute("controls", "none");
+  if (src === "./sound/Tetris.mp3") {
+    this.sound.setAttribute("loop", "true");
+  }
   this.sound.style.display = "none";
   document.body.appendChild(this.sound);
   this.play = function () {
