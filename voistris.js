@@ -220,6 +220,8 @@ function playGame() {
     if (!hold) {
       hold = this;
       piece = next;
+      next = randomPiece();
+      document.getElementById("next-piece-image").src = next.picture;
       this.unDraw();
     } else if (holdTime) {
       this.unDraw();
@@ -243,10 +245,6 @@ function playGame() {
       if (this.x < 0) {
         piece.x = 0;
       }
-
-      console.log("this", this)
-      console.log("piece", piece)
-      console.log("hold", hold)
 
       hold = this;
       piece.draw();
