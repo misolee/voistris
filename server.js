@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const db = require("./config/keys").mongoURI;
 const Scoreboard = require("./models/scoreboard");
 const bodyParser = require('body-parser');
+const path = require('path');
 app.use(express.static('public'));
 
 mongoose
@@ -19,6 +20,13 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log("Server listening on port " + port);
 });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  })
+}
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
