@@ -343,9 +343,16 @@ a:hover {
 
 .choose-option-label {
   flex: 1;
-  font-size: 50px;
+  font-size: 40px;
   padding-top: 10px;
   color: #342b63;
+}
+
+.input-your-own {
+  color: #342b63;
+  letter-spacing: 1px;
+  font-family: 'Righteous', cursive;
+  padding-bottom: 10px;
 }
 
 .choose-method {
