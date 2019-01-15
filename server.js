@@ -6,6 +6,7 @@ const db = require("./config/keys").mongoURI;
 const Scoreboard = require("./models/scoreboard");
 const bodyParser = require('body-parser');
 const path = require('path');
+
 app.use(express.static('public'));
 
 if (process.env.NODE_ENV === 'production') {
