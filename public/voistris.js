@@ -414,12 +414,12 @@ function playGame() {
   } else if (voiceOrKeyboard === "voice") {
     var ctrl = new anycontrol();
 
-    const commandLeft = document.getElementById("voice-commands-left").value;
-    const commandRight = document.getElementById("voice-commands-right").value;
-    const commandDown = document.getElementById("voice-commands-down").value;
-    const commandRotate = document.getElementById("voice-commands-rotate").value;
-    const commandHold = document.getElementById("voice-commands-hold").value;
-    const commandDrop = document.getElementById("voice-commands-drop").value;
+    let commandLeft = document.getElementById("voice-commands-left").value;
+    let commandRight = document.getElementById("voice-commands-right").value;
+    let commandDown = document.getElementById("voice-commands-down").value;
+    let commandRotate = document.getElementById("voice-commands-rotate").value;
+    let commandHold = document.getElementById("voice-commands-hold").value;
+    let commandDrop = document.getElementById("voice-commands-drop").value;
 
     ctrl.addCommand(`${commandLeft}`, function () {
       piece.moveLeft();
@@ -559,12 +559,30 @@ function PLAYCOUNTDOWN() {
       document.getElementById("commands").style.visibility = 'visible';
       document.getElementById("commands").style.animation = 'commands 0.7s';
     } else if (voiceOrKeyboard === "voice") {
-      const commandLeft = document.getElementById("voice-commands-left").value;
-      const commandRight = document.getElementById("voice-commands-right").value;
-      const commandDown = document.getElementById("voice-commands-down").value;
-      const commandRotate = document.getElementById("voice-commands-rotate").value;
-      const commandHold = document.getElementById("voice-commands-hold").value;
-      const commandDrop = document.getElementById("voice-commands-drop").value;
+      let commandLeft = document.getElementById("voice-commands-left").value;
+      if (!commandLeft) {
+        commandLeft = "left";
+      }
+      let commandRight = document.getElementById("voice-commands-right").value;
+      if (!commandRight) {
+        commandRight = "right";
+      }
+      let commandDown = document.getElementById("voice-commands-down").value;
+      if (!commandDown) {
+        commandDown = "down";
+      }
+      let commandRotate = document.getElementById("voice-commands-rotate").value;
+      if (!commandRotate) {
+        commandRotate = "rotate";
+      }
+      let commandHold = document.getElementById("voice-commands-hold").value;
+      if (!commandHold) {
+        commandHold = "hold";
+      }
+      let commandDrop = document.getElementById("voice-commands-drop").value;
+      if (!commandDrop) {
+        commandDrop = "drop";
+      }
       
       document.getElementById("command-outline-hold").innerHTML = "HOLD";
       document.getElementById("command-outline-drop").innerHTML = "DROP";
