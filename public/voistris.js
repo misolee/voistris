@@ -3,7 +3,7 @@ import * as Voistrimino from './voistrimino.js';
 
 getAllScores().then((e) => {
   e.data.forEach((data, i) => {
-    document.getElementById(`top-score-name-${i}`).innerHTML = data.name;
+    document.getElementById(`top-score-name-${i}`).innerHTML = data.name.toUpperCase();
     document.getElementById(`top-score-score-${i}`).innerHTML = data.score;
   });
 });
@@ -297,11 +297,16 @@ function playGame() {
           document.getElementById("gameover-score").innerHTML = score;
           document.getElementById("game-end").style.display = 'block';
           document.getElementById("game-end").addEventListener("click", () => {
-            window.open('https://www.linkedin.com/in/miso-lee-872836149/', '_blank');
+            // window.open('https://www.linkedin.com/in/miso-lee-872836149/', '_blank');
+            window.location.reload();
+          });
+          
+          document.getElementById("submit-score").addEventListener("click", () => {
+            const name = document.getElementById("score-name").value;
+            sendScore({ name, score });
             window.location.reload();
           });
 
-          sendScore({ name, score });
           muteOrSound(gameOverSound2);
         }
         
