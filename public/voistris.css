@@ -45,6 +45,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+  margin-bottom: 8px;
 }
 
 .leaderboard-labels {
