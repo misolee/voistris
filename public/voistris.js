@@ -9,10 +9,10 @@ getAllScores().then((e) => {
 });
 
 let favicon_images = [
-                    "./favicon/blue-favicon.png",
-                    "./favicon/yellow-favicon.png",
-                    "./favicon/green-favicon.png",
-                    "./favicon/red-favicon.png"
+                  "./yellow.png",
+                  "./green.png",
+                  "./red.png",
+                  "./blue.png"
                 ],
     image_counter = 0; // To keep track of the current image
 

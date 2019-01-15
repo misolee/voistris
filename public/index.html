@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Coiny|Fredoka+One|Luckiest+Guy|Monoton|Paytone+One|Ultra" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-    <link id="favicon-link" rel="icon" href="favicon.gif" type="image/gif" >
+    <link id="favicon-link" rel="icon" href="./blue.png" type="image/gif" >
   </head>
   <body>
     <div id="game-end">
@@ -256,5 +256,25 @@
     <!-- <script src="voistrimino.js"></script> -->
     <!-- <script src="voistris.js"></script> -->
     <script src="./bundle.js"></script>
+    <!-- <script>
+      let favicon_images = [
+                          "./favicon/blue-favicon.png",
+                          "./favicon/yellow-favicon.png",
+                          "./favicon/green-favicon.png",
+                          "./favicon/red-favicon.png"
+                      ],
+          image_counter = 0; // To keep track of the current image
+
+      setInterval(function() {
+        let favicon = document.getElementById("favicon-link");
+        favicon.href = favicon_images[image_counter];
+        console.log(favicon);
+        if (image_counter == favicon_images.length -1) {
+          image_counter = 0;
+        } else {
+          image_counter++;
+        }
+      }, 100);
+    </script> -->
   </body>
 </html>
