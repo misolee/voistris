@@ -8,6 +8,13 @@ const bodyParser = require('body-parser');
 const path = require('path');
 app.use(express.static('public'));
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to mongoDB"))
@@ -20,13 +27,6 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log("Server listening on port " + port);
 });
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('frontend/build'));
-  app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  })
-}
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -53,26 +53,3 @@ app.get("/getAllScores", (req, res) => {
     });
 });
 
-
-
-// router.get('/:id', (req, res) => {
-//   User.findById(req.params.id)
-//     .then(user => {
-//       res.json({
-//         id: user.id,
-//         name: user.name,
-//         email: user.email,
-//         partnerId: user.partnerId,
-//         connectionCode: user.connectionCode,
-//         connected: user.connected,
-//         nickname: user.nickname,
-//         birthday: user.birthday,
-//         zipCode: user.zipCode
-//       });
-//     })
-//     .catch(err =>
-//       res.status(404).json({
-//         nouserfound: 'No User found with that ID'
-//       })
-//     );
-// });
