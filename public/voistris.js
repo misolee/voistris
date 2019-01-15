@@ -297,13 +297,15 @@ function playGame() {
           document.getElementById("gameover-score").innerHTML = score;
           document.getElementById("game-end").style.display = 'block';
           
-          document.getElementById("submit-score-button").addEventListener("click", () => {
+          document.getElementById("submit-score").addEventListener("click", () => {
             const name = document.getElementById("score-name").value;
             sendScore({ name, score });
+            window.location.reload();
           });
           
           muteOrSound(gameOverSound2);
         }
+
         
         // lock piece
         board[this.y + r][this.x + c] = this.color;

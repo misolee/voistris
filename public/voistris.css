@@ -608,7 +608,7 @@ a:hover {
   font-size: 35px;
 }
 
-.submit-score {
+.submit-score-div {
   display: flex;
   justify-content: space-around;
   margin: 10px 500px;
