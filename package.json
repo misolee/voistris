@@ -1,25 +1,24 @@
 {
-  "name": "voitris",
+  "name": "voistris",
   "version": "1.0.0",
-  "description": "Voitris is a classic tetris game with voice-controlled commands.",
+  "description": "Voistris is a classic tetris game with voice-controlled commands.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "server": "nodemon server.js",
-    "webpack": "webpack --watch",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "webpack": "webpack --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/misolee/voitris.git"
+    "url": "git+https://github.com/misolee/voistris.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/misolee/voitris/issues"
+    "url": "https://github.com/misolee/voistris/issues"
   },
-  "homepage": "https://github.com/misolee/voitris#readme",
+  "homepage": "https://github.com/misolee/voistris#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
