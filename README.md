@@ -1,19 +1,59 @@
 # Overview
 
-Voitris is a classic tetris game with voice-controlled commands.
+Voitris is a classic tetris game with two options how to play (Voice controlled and Keyboard).
+
+Play Now [here](https://voistris.herokuapp.com/)!
+
+![game](./images/main.png)
+
+![Game Over](./images/game-over.png)
+
+#
+
+## Technologies used
+
+* Canvas
+* Speech Recognition API
+* Javascript
+* HTML/CSS
+* MongoDB
 
 #
 
 ## Functionality
-* Users will speak following command words to controll the game.
+* Users will be given two options.
 
-### Command Words
-* up = "UP"
-* down = "DOWN"
-* turn = "TURN"
+![Two Options](./images/two-options.png)
 
-### Extra Commands
-* hold = "HOLD"
+![Voice Commands](./images/voice-commands.png)
+
+### Voice
+
+Users can use the default commands or input their own command words for controller.
+
+### Keyboard
+
+Users can use standard keyboard for controller.
+* Up(Rotate), Right, Left, Down
+* Shift(Hold), Space(Drop)
+
+### Pause/Play
+
+Users can pause the game anytime by saying pause/play(voice) or pressing "p" or clicking the sound icon.
+
+![Pause Game](./images/pause.png)
+
+### Mute
+
+Users can mute and unmute the sounds by pressing "m" or clicking the sound icon.
+
+#
+
+## Extra Features
+
+### Leaderboard
+
+Users can put their scores up when they have high scores.
 
 #
 
@@ -48,10 +88,3 @@ Voitris is a classic tetris game with voice-controlled commands.
 
 ### Tuesday
   - [ ] Test out the game
-
-#
-
-## Technologies I'm using
-
-* Canvas
-* Speech Recognition API
