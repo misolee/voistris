@@ -27,6 +27,7 @@ app.get("/", (req, res) => {
 
 app.listen(port, () => {
   console.log("Server listening on port " + port);
+  process.env.PORT || 5000;
 });
 
 app.use(bodyParser.json());
