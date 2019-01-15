@@ -35,7 +35,6 @@ app.use(bodyParser.urlencoded({
 
 app.post("/addscore", (req, res) => {
   const score = new Scoreboard(req.body);
-  console.log(req.body)
   score.save()
     .then(item => {
       res.send("score saved to database");
@@ -44,3 +43,36 @@ app.post("/addscore", (req, res) => {
       res.status(400).send("unable to save to database");
     });
 });
+
+app.get("/getAllScores", (req, res) => {
+  Scoreboard.find()
+    .sort({ score: -1 })
+    .limit(5)
+    .then(scores => {
+      res.json(scores);
+    });
+});
+
+
+
+// router.get('/:id', (req, res) => {
+//   User.findById(req.params.id)
+//     .then(user => {
+//       res.json({
+//         id: user.id,
+//         name: user.name,
+//         email: user.email,
+//         partnerId: user.partnerId,
+//         connectionCode: user.connectionCode,
+//         connected: user.connected,
+//         nickname: user.nickname,
+//         birthday: user.birthday,
+//         zipCode: user.zipCode
+//       });
+//     })
+//     .catch(err =>
+//       res.status(404).json({
+//         nouserfound: 'No User found with that ID'
+//       })
+//     );
+// });

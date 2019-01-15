@@ -43,6 +43,62 @@ body {
   padding-top: 10px;
   visibility: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.leaderboard-labels {
+  margin: 13px 0 5px 0;
+}
+
+.score-scores {
+  margin: 2px 0;
+}
+
+.top-score-rank {
+  justify-content: space-evenly;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.top-score-name {
+  justify-content: space-evenly;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.top-score-score {
+  justify-content: space-evenly;
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+
+.top-scores {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+  height: 170px;
+}
+
+.top-score-rank {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Righteous', cursive;
+  font-size: 20px;
+}
+
+.top-score-name {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Righteous', cursive;
+  font-size: 20px;
+}
+
+.top-score-score {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Righteous', cursive;
+  font-size: 20px;
 }
 
 .hold-box {

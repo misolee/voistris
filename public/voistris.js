@@ -1,5 +1,12 @@
-import { sendScore } from './score.js';
+import { sendScore, getAllScores } from './score.js';
 import * as Voistrimino from './voistrimino.js';
+
+getAllScores().then((e) => {
+  e.data.forEach((data, i) => {
+    document.getElementById(`top-score-name-${i}`).innerHTML = data.name;
+    document.getElementById(`top-score-score-${i}`).innerHTML = data.score;
+  });
+});
 
 let favicon_images = [
                     "./favicon/blue-favicon.png",
@@ -294,10 +301,7 @@ function playGame() {
             window.location.reload();
           });
 
-          const name = document.getElementById("player-name").value;
-
           sendScore({ name, score });
-
           muteOrSound(gameOverSound2);
         }
         

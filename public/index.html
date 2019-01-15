@@ -23,13 +23,6 @@
     <button id="playbutton">
       <div class="blink" id="countdown"><i class="fas fa-play" id="playbutton-emoji"></i>PLAY</div>
     </button>
-    <!-- <form method="post" action="/addscore">
-      <label>Enter your name</label>
-      <input type="text" name="name" placeholder="Enter your name" required>
-      <div class="score"></div>
-      <input type="submit" value="Submit">
-    </form> -->
-    <!-- <input type="text" id="player-name" value="miso"> -->
     <div id="voice-option">
       <div class="choose-option-label">
         VOICE COMMANDS
@@ -97,7 +90,35 @@
     <div class="information">
       <div class="top-left">
         <div class="scoreboard" id="scoreboard">
-          SCOREBOARD
+          <div class="leaderboard">
+            LEADERBOARD
+          </div>
+          <div class="top-scores">
+            <div class="top-score-rank">
+              <div class="leaderboard-labels">RANK</div>
+              <div class="score-scores">1</div>
+              <div class="score-scores">2</div>
+              <div class="score-scores">3</div>
+              <div class="score-scores">4</div>
+              <div class="score-scores">5</div>
+            </div>
+            <div class="top-score-name">
+              <div class="leaderboard-labels">NAME</div>
+              <div class="score-scores" id="top-score-name-0">NAME</div>
+              <div class="score-scores" id="top-score-name-1">NAME</div>
+              <div class="score-scores" id="top-score-name-2">NAME</div>
+              <div class="score-scores" id="top-score-name-3">NAME</div>
+              <div class="score-scores" id="top-score-name-4">NAME</div>
+            </div>
+            <div class="top-score-score">
+              <div class="leaderboard-labels">SCORE</div>
+              <div class="score-scores" id="top-score-score-0">0</div>
+              <div class="score-scores" id="top-score-score-1">0</div>
+              <div class="score-scores" id="top-score-score-2">0</div>
+              <div class="score-scores" id="top-score-score-3">0</div>
+              <div class="score-scores" id="top-score-score-4">0</div>
+            </div>
+          </div>
         </div>
         <div class="hold-box">
           <div class="hold">
