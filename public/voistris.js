@@ -306,7 +306,6 @@ function playGame() {
           muteOrSound(gameOverSound2);
         }
 
-        
         // lock piece
         board[this.y + r][this.x + c] = this.color;
         holdTime = true;
@@ -601,9 +600,7 @@ function PLAYCOUNTDOWN() {
 
       document.getElementById("commands").style.visibility = 'visible';
       document.getElementById("commands").style.animation = 'commands 0.7s';
-
     }
-    
     document.getElementById("scoreboard").style.visibility = 'visible';
     document.getElementById("scoreboard").style.animation = 'commands 0.7s';
     document.getElementById("score-level").style.visibility = 'visible';
@@ -621,7 +618,6 @@ function PLAYCOUNTDOWN() {
       backgroundMusic.play();
     }
   }, 3200);
-
 }
 
 const chooseVoicePlay = document.getElementById("choose-voice-play");
