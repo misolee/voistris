@@ -46,6 +46,7 @@ body {
   display: flex;
   flex-direction: column;
   margin-bottom: 8px;
+  min-width: 345px;
 }
 
 .leaderboard-labels {
@@ -54,7 +55,6 @@ body {
 
 .score-scores {
   margin: 2px 0;
-  min-width: 102px;
 }
 
 .top-score-rank {
