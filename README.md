@@ -59,8 +59,8 @@ Users can put their scores up when they have high scores.
 
 ## MVPs
  * Basic visuals and an interactive interface.
- * Player can controll the game with keyboard.
- * Player can controll the game with voice.
+ * Player can control the game with keyboard.
+ * Player can control the game with voice.
  * 'Game Over' when the stacked blocks reach the top.
 
 #
