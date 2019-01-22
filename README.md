@@ -8,8 +8,6 @@ Play Now [here](https://voistris.herokuapp.com/)!
 
 ![Game Over](./images/game-over.png)
 
-#
-
 ## Technologies used
 
 * Canvas
@@ -17,8 +15,6 @@ Play Now [here](https://voistris.herokuapp.com/)!
 * Javascript
 * HTML/CSS
 * MongoDB
-
-#
 
 ## Functionality
 * Users will be given two options.
@@ -47,23 +43,17 @@ Users can pause the game anytime by saying pause/play(voice) or pressing "p" or 
 
 Users can mute and unmute the sounds by pressing "m" or clicking the sound icon.
 
-#
-
 ## Extra Features
 
 ### Leaderboard
 
 Users can put their scores up when they have high scores.
 
-#
-
 ## MVPs
  * Basic visuals and an interactive interface.
  * Player can control the game with keyboard.
  * Player can control the game with voice.
  * 'Game Over' when the stacked blocks reach the top.
-
-#
 
 ## Development Timeline
 
